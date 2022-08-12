@@ -47,3 +47,9 @@ springCloudAlibaba.iml
 webflux/.mvn/
 webflux/mvnw
 webflux/mvnw.cmd
+/.idea/
+mutli-datasource/mutli-datasource.iml
+mutli-datasource/src/test/
+mutli-datasource/target/classes/application.yml
+mutli-datasource/target/classes/mapper/
+mutli-datasource/target/generated-sources/
