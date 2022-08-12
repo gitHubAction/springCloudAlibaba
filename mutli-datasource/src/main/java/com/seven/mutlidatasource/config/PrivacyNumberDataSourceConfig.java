@@ -53,13 +53,6 @@ public class PrivacyNumberDataSourceConfig {
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         configuration.setMapUnderscoreToCamelCase(true);
         configuration.setLogImpl(StdOutImpl.class);
-//        Interceptor interceptor = new PageInterceptor();
-//        Properties properties = new Properties();
-//        properties.setProperty("helperDialect", "mysql");
-//        properties.setProperty("reasonable", "true");
-//        properties.setProperty("supportMethodsArguments","true");
-//        properties.setProperty("params","count=countSql");
-//        interceptor.setProperties(properties);
         configuration.addInterceptor(pageHelper);
         return configuration;
     }
