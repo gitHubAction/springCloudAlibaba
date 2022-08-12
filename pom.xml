@@ -10,6 +10,8 @@
         <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
         <feign-reactor.version>3.2.0</feign-reactor.version>
+        <mapper.starter.version>2.1.5</mapper.starter.version>
+        <druid.version>1.2.8</druid.version>
     </properties>
 
     <parent>
@@ -28,10 +30,51 @@
         <module>sentinel</module>
         <module>webflux</module>
         <module>auth-server</module>
+        <module>mutli-datasource</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>5.2.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.7.21</version>
+            </dependency>
+            <!--阿里数据库连接池 -->
+            <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.19</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${mapper.starter.version}</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
             <dependency>
                 <groupId>org.apache.commons</groupId>

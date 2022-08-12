@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seven.mutlidatasource.dao.tc.TcAppMapper">
+  <resultMap id="BaseResultMap" type="com.seven.mutlidatasource.entity.TcApp">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="app_code" jdbcType="VARCHAR" property="appCode" />
+    <result column="app_name" jdbcType="VARCHAR" property="appName" />
+    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
+    <result column="create_user_code" jdbcType="VARCHAR" property="createUserCode" />
+    <result column="update_user_code" jdbcType="VARCHAR" property="updateUserCode" />
+    <result column="enable_flag" jdbcType="TINYINT" property="enableFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, app_code, app_name, app_key, create_user_code, update_user_code, enable_flag, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_tc_app
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_tc_app
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.seven.mutlidatasource.entity.TcApp" useGeneratedKeys="true">
+    insert into t_tc_app (app_code, app_name, app_key, 
+      create_user_code, update_user_code, enable_flag, 
+      create_time, update_time)
+    values (#{appCode,jdbcType=VARCHAR}, #{appName,jdbcType=VARCHAR}, #{appKey,jdbcType=VARCHAR}, 
+      #{createUserCode,jdbcType=VARCHAR}, #{updateUserCode,jdbcType=VARCHAR}, #{enableFlag,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.seven.mutlidatasource.entity.TcApp">
+    update t_tc_app
+    set app_code = #{appCode,jdbcType=VARCHAR},
+      app_name = #{appName,jdbcType=VARCHAR},
+      app_key = #{appKey,jdbcType=VARCHAR},
+      create_user_code = #{createUserCode,jdbcType=VARCHAR},
+      update_user_code = #{updateUserCode,jdbcType=VARCHAR},
+      enable_flag = #{enableFlag,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.seven.mutlidatasource.entity.TcApp" useGeneratedKeys="true">
+    insert into t_tc_app
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appCode != null and appCode != ''">
+        app_code,
+      </if>
+      <if test="appName != null and appName != ''">
+        app_name,
+      </if>
+      <if test="appKey != null and appKey != ''">
+        app_key,
+      </if>
+      <if test="createUserCode != null and createUserCode != ''">
+        create_user_code,
+      </if>
+      <if test="updateUserCode != null and updateUserCode != ''">
+        update_user_code,
+      </if>
+      <if test="enableFlag != null">
+        enable_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appCode != null and appCode != ''">
+        #{appCode,jdbcType=VARCHAR},
+      </if>
+      <if test="appName != null and appName != ''">
+        #{appName,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null and appKey != ''">
+        #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserCode != null and createUserCode != ''">
+        #{createUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUserCode != null and updateUserCode != ''">
+        #{updateUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.seven.mutlidatasource.entity.TcApp">
+    update t_tc_app
+    <set>
+      <if test="appCode != null and appCode != ''">
+        app_code = #{appCode,jdbcType=VARCHAR},
+      </if>
+      <if test="appName != null and appName != ''">
+        app_name = #{appName,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null and appKey != ''">
+        app_key = #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserCode != null and createUserCode != ''">
+        create_user_code = #{createUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUserCode != null and updateUserCode != ''">
+        update_user_code = #{updateUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="enableFlag != null">
+        enable_flag = #{enableFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectAll" parameterType="com.seven.mutlidatasource.entity.TcApp" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" /> 
+    from 
+    t_tc_app
+    <where>
+      <if test="id != null">
+        and id= #{id,jdbcType=BIGINT}
+      </if>
+      <if test="appCode != null and appCode != ''">
+        and app_code= #{appCode,jdbcType=VARCHAR}
+      </if>
+      <if test="appName != null and appName != ''">
+        and app_name= #{appName,jdbcType=VARCHAR}
+      </if>
+      <if test="appKey != null and appKey != ''">
+        and app_key= #{appKey,jdbcType=VARCHAR}
+      </if>
+      <if test="createUserCode != null and createUserCode != ''">
+        and create_user_code= #{createUserCode,jdbcType=VARCHAR}
+      </if>
+      <if test="updateUserCode != null and updateUserCode != ''">
+        and update_user_code= #{updateUserCode,jdbcType=VARCHAR}
+      </if>
+      <if test="enableFlag != null">
+        and enable_flag= #{enableFlag,jdbcType=TINYINT}
+      </if>
+      <if test="createTime != null">
+        and create_time= #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        and update_time= #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+</mapper>

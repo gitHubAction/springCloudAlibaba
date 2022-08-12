@@ -1,0 +1,55 @@
+server:
+  port: 8085
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    privacynumber-uat:
+      name: privacynumber-uat
+      url: jdbc:mysql://10.31.117.95/privacynumber_uat?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      username: privacynumber_uat_ddl
+      password: 'c#YrJnMJ6bOy1$U('
+      driverClassName: com.mysql.cj.jdbc.Driver
+      initialSize: 5
+      minIdle: 10
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      maxEvictableIdleTimeMillis: 900000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: true
+      filters: stat,logback
+    tiny-config:
+      name: tiny-config
+      url: jdbc:mysql://10.31.117.95/tiny_config?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      username: tiny_config_ddl
+      password: 'U+twspCSc8bUXJmY'
+      driverClassName: com.mysql.cj.jdbc.Driver
+      initialSize: 5
+      minIdle: 10
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      maxEvictableIdleTimeMillis: 900000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: true
+      filters: stat,logback
+  cloud:
+    nacos:
+      discovery:
+        password: nacos
+        username: nacos
+        server-addr: 172.17.144.161:8848
+        namespace: public
+  application:
+    name: mutli-datasource
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
